@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SHARK-TECH LABS</title>
+
+    <!-- Tailwind CSS CDN -->
+    <!-- Tailwind CSS CDN Removed -->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Space+Grotesk:wght@300..700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header class="site-header">
+        <nav class="main-nav">
+
+            <!-- Logo + Name -->
+            <div class="logo-container">
+                <div class="logo-box">
+                    <img src="images/shark-logo.jpg" alt="Shark Logo" class="header-logo">
+                </div>
+                <span class="logo-text">Shark-Tech Labs</span>
+            </div>
+
+            <!-- Navigation -->
+            <ul class="nav-list" id="nav-list">
+                <li class="nav-link"><a href="#mission">Mission</a></li>
+                <li class="nav-link"><a href="#products">Ecosystem</a></li>
+                <li class="nav-link">Developer program</li>
+                <li class="nav-link"><a href="#about">About</a></li>
+                <li class="nav-link"><a href="partner.html">Partner with us</a></li>
+                <li class="btn-login">
+                    LOGIN
+                </li>
+            </ul>
+
+            <!-- Mobile Nav Toggle (Hamburger) -->
+            <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle navigation">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+
+            <!-- Mobile Nav Overlay -->
+            <div class="mobile-nav-overlay" id="mobile-nav-overlay">
+                <ul class="mobile-nav-list">
+                    <li><a href="#mission">Mission</a></li>
+                    <li><a href="#products">Ecosystem</a></li>
+                    <li><a href="#">Developer program</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="partner.html">Partner with us</a></li>
+                    <li><button class="btn-login mobile-login-btn">LOGIN</button></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ================= HERO SECTION ================= -->
+    <section class="hero-section">
+        <!-- Ocean Particle Background -->
+        <canvas id="ocean"></canvas>
+        <div class="hero-wrapper">
+
+            <!-- Backed By Badge -->
+            <div class="status-badge">
+                <div class="status-dot"></div>
+                <span class="status-text">making the big Revolution</span>
+            </div>
+
+            <h1 class="hero-title">
+                Knowledge is Ocean
+            </h1>
+
+            <p class="hero-subtitle">
+                You Can Find The Best Here Like
+            </p>
+
+            <!-- SHARK Text Levels -->
+            <div class="shark-display-container">
+                <span class="shark-text-large">SHARK</span>
+
+            </div>
+
+            <!-- Description -->
+            <p class="hero-description">
+                We are Shark Tech Labs. A curiosity-driven tech lab exploring the peak of AI models.
+                From advanced AI systems to deep innovation, we learn from the ocean — like a shark.
+            </p>
+
+            <!-- Buttons -->
+            <div class="hero-btn-container">
+                <a href="#products" class="btn-primary"
+                    style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">EXPLORE</a>
+                <button class="btn-secondary" onclick="window.location.href='partner.html'">CONTACT LABS</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= MISSION SECTION ================= -->
+    <section class="mission-section" id="mission">
+        <div class="mission-wrapper">
+            <div class="mission-grid">
+
+                <!-- Left Content -->
+                <div class="reveal-on-scroll visible">
+                    <h2 class="mission-title">We loading the big for learners</h2>
+                    <div class="mission-text">
+                        <p>
+                            At shark-Tech Labs, we believe technology is source of everybody not only for payables:
+                            <strong>Use Learn Evolve.</strong>
+                        </p>
+                        <p>
+                            SHARK-TECH LABS is driven by the belief that technology should be accessible to everyone.
+                            We build innovative, future-ready solutions that empower individuals and communities.
+                            Our platform removes barriers between people and advanced technology.
+                            We focus on inclusion, simplicity, and real-world impact.
+                            At SHARK-TECH LABS, innovation is for all—not just a few.
+                        </p>
+                    </div>
+                    <div class="stats-container">
+                        <div>
+                            <p class="stat-number">2+</p>
+                            <p class="stat-label">Working Projects</p>
+                        </div>
+                        <div>
+                            <p class="stat-number">100+</p>
+                            <p class="stat-label">Supporter Network</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Content (Code Window) -->
+                <div class="reveal-on-scroll delay-200 visible">
+                    <div class="code-window">
+                        <div class="window-header">
+                            <span class="window-title">mission_statement.py</span>
+                            <div class="window-controls">
+                                <div class="control-dot"></div>
+                                <div class="control-dot"></div>
+                            </div>
+                        </div>
+                        <div class="window-content">
+                            <p><span class="code-white">class</span> <span class="code-gray">Shark-Tech Labs</span>:</p>
+                            <p class="pl-4"><span class="code-white">def</span> <span
+                                    class="code-gray">__init__</span>(self):</p>
+                            <p class="pl-8">self.Goal = <span class="code-white">"The Best source of this GEN-AI"</span>
+                            </p>
+                            <p class="pl-8">self.Aim = <span class="code-white">"learners" &amp; "Developers"</span></p>
+                            <p class="pl-8">self.thinking = <span class="code-white">"To serve people"</span></p>
+                            <br>
+                            <p class="pl-4"><span class="code-white">def</span> <span
+                                    class="code-gray">solve_problems</span>(self):</p>
+                            <p class="pl-8 code-comment"># Removing manual work</p>
+                            <p class="pl-8"><span class="code-white">return</span> True</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= PRODUCTS SECTION ================= -->
+    <section class="products-section" id="products">
+        <div class="products-wrapper">
+            <div class="section-header">
+                <span class="section-eyebrow">The Ecosystem</span>
+                <h2 class="section-title">Our Innovations & Apps</h2>
+            </div>
+
+            <div class="products-grid">
+
+                <!-- Dolphin AI -->
+                <div class="product-card">
+                    <div class="card-header">
+                        <span class="status-tag">Assembling stage</span>
+                        <!-- Placeholder for Logo -->
+                        <img src="images/shark-logo.jpg" alt="Shark AI Logo" class="product-logo">
+                    </div>
+                    <h3 class="product-title">Shark AI</h3>
+
+                    <div class="timeline-container">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-header">
+                                <span class="phase-name">Accessible phase</span>
+                                <span class="target-date">Target: may 2026</span>
+                            </div>
+                            <p class="timeline-desc">
+                                Powered by Shark-techlabs <strong>TinyLlama</strong>. Enhanced with 'Shark-techLabs’
+                                proprietary on-prem orchestration, security, and retrieval intelligence.
+                            </p>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-dot active"></div>
+                            <div class="timeline-header">
+                                <span class="phase-name">Beta v0.1</span>
+                                <span class="target-date">Target: Jan 2027</span>
+                            </div>
+                            <p class="timeline-desc">
+                                Introduces <strong>Shark AI Core v0.1 </strong>. Optimized for all scale user,Best use
+                                for students on latest Tech stack Evolved in the matrix.
+                            </p>
+                        </div>
+                    </div>
+
+                    <a href="#" class="mvp-link">
+                        View Engineering MVP →
+                    </a>
+                </div>
+
+                <!-- DolSys OS -->
+                <div class="product-card">
+                    <div class="card-header">
+                        <span class="status-tag outline">Almost Done</span>
+                        <!-- Placeholder for Logo -->
+                        <img src="images/lovebiteslogo.jpg" alt="Love Bites Logo" class="product-logo">
+                    </div>
+                    <h3 class="product-title">LOVEBITES by Shark-Techlabs</h3>
+                    <p class="product-description">
+                        LoveBites is your private space to express love, capture real moments, and connect deeply 💖📸
+                        Share snaps and stories that go beyond attraction and celebrate true loyalty 🔥🤍
+                        Designed for an intimate, bold experience where emotions feel real and personal ✨
+                        Because love is beautiful—but loyalty is what makes it last ♾️❤️
+                    </p>
+                    <div class="feature-tags">
+                        <span class="tag-item">Premium experience</span>
+                        <span class="tag-item">Modern UI</span>
+                        <span class="tag-item">Privacy </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= TERMINAL PREVIEW SECTION ================= -->
+    <section class="terminal-preview-section">
+        <div class="terminal-wrapper">
+            <div class="terminal-window">
+                <div class="terminal-controls">
+                    <div class="term-dot red"></div>
+                    <div class="term-dot yellow"></div>
+                    <div class="term-dot green"></div>
+                </div>
+                <div class="term-header-text">Shark-techlabs@terminal:~</div>
+
+                <div class="term-content" id="demo-chat-window">
+                    <div class="term-line">
+                        <span class="text-cmd">&gt;</span><span class="code-white">Shark-Techlabs --init</span>
+                    </div>
+                    <div class="term-line">
+                        <span class="code-comment">Initializing SharkAI Core...</span>
+                    </div>
+                    <div class="term-line">
+                        <span class="code-comment">Loading Neural Engines... [OK]</span>
+                    </div>
+                    <div class="term-line">
+                        <span class="text-cmd">&gt;</span><span class="code-white">run shark-ai</span>
+                    </div>
+                    <div class="term-line">
+                        <span class="code-white" style="font-weight: bold;">AI:</span> <span class="code-gray">Shark
+                            AI Active. Ready to automate.</span>
+                    </div>
+                </div>
+
+                <p class="term-footer">SharkAi Concept Preview: Integrated Terminal Environment</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= ABOUT SECTION ================= -->
+    <section class="about-section" id="about">
+        <div class="about-wrapper">
+            <h2 class="about-title">The people behind Shark-Techlabs</h2>
+            <div class="team-grid">
+
+                <!-- T Rakesh -->
+                <div class="reveal-on-scroll team-card group">
+                    <div class="member-image-container">
+                        <div class="member-image-glow"></div>
+                        <img src="images/raki-pink.jpg" alt="Rakesh" class="member-image">
+                    </div>
+                    <h3 class="member-name">Rakesh</h3>
+                    <p class="member-role">Founder &amp; CEO</p>
+                    <p class="member-desc">Visinory Enthusiast and Lead Developer.</p>
+                    <a href="https://www.linkedin.com/in/rakesh-thangella-17ab0b363?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                        target="_blank" class="social-link">LinkedIn
+                        ↗</a>
+                </div>
+
+                <!--  D Rakesh -->
+                <div class="reveal-on-scroll delay-100 team-card group">
+                    <div class="member-image-container">
+                        <div class="member-image-glow"></div>
+                        <img src="images/rakesh.jpg" alt="Daniel" class="member-image">
+                    </div>
+                    <h3 class="member-name">Rakesh</h3>
+                    <p class="member-role">CFO &amp;Guider</p>
+                    <p class="member-desc">Active at Labs and managing billings.</p>
+                    <a href="https://www.instagram.com/mr__special__kid__?igsh=MXdnc25xOWZ0OHJtYQ==" target="_blank"
+                        class="social-link">Instagram
+                        ↗</a>
+
+                    <!--rahul-->
+                </div>
+                <div class="reveal-on-scroll team-card group">
+                    <div class="member-image-container">
+                        <div class="member-image-glow"></div>
+                        <img src="images/rahul.jpg" alt="Rakesh" class="member-image">
+                    </div>
+                    <h3 class="member-name">Rahul</h3>
+                    <p class="member-role">Research &amp; styling</p>
+                    <p class="member-desc">Modern desinger.</p>
+                    <a href="https://www.instagram.com/red.rahul_?igsh=MWY4NThrZmt0OGxpOQ==" target="_blank"
+                        class="social-link">Instagram
+                        ↗</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="site-footer">
+        <div class="footer-wrapper">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <span class="brand-text">Shark-Techlabs</span>
+                    <p class="brand-desc">Creating the best, Like SHARK in a Ocean.</p>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Products</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="hover:text-white transition-colors">Shark AI</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">LOVEBITES</a></li>
+
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#mission" class="hover:text-white transition-colors">Mission</a></li>
+                        <li><a href="#about" class="hover:text-white transition-colors">Team</a></li>
+                        <li><a href="#" onclick="openModal('contact-modal')"
+                                class="hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Socials</h4>
+                    <div class="footer-socials">
+                        <a href="https://www.linkedin.com/company/doltechlabs/?viewAsMember=true" target="_blank"
+                            class="hover:text-white transition-colors text-lg"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://x.com/doltechlabs" target="_blank"
+                            class="hover:text-white transition-colors text-lg"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="hover:text-white transition-colors text-lg"><i class="fab fa-github"></i></a>
+                        <a href="" class="hover:text-white transition-colors text-lg"><i
+                                class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Shark-Techlabs. All rights reserved.</p>
+                <p>Design by Shark-Techlabs</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

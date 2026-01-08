@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Partner - SHARK-TECH LABS</title>
+
+    <!-- Supabase CDN -->
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Space+Grotesk:wght@300..700&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body class="partner-page-body">
+
+
+
+    <!-- Ocean Particle Background -->
+    <canvas id="ocean"></canvas>
+
+    <!-- Main Box -->
+    <div class="partner-card">
+        <!-- Close Button (X) -->
+        <a href="index.html" class="partner-close-btn">&times;</a>
+
+        <!-- Logo -->
+        <div style="display: flex; justify-content: center; margin-bottom: 2rem;">
+            <div class="logo-box">
+                <img src="images/shark-logo.jpg" alt="Shark Logo" class="header-logo">
+            </div>
+        </div>
+
+        <!-- Header -->
+        <h1 class="partner-card-header">Partner / Contact Labs</h1>
+
+        <!-- ✅ Supabase Google Login Button -->
+        <button class="btn-white-full" onclick="loginWithGoogle()">
+            <i class="fab fa-google" style="color:#EA4335;"></i>
+            Sign in with Google
+        </button>
+
+        <!-- Inner Box -->
+        <div class="partner-inner-box" style="position: relative;">
+            <!-- Lock Overlay -->
+            <div id="lock-overlay"
+                style="position:absolute; top:0; left:0; right:0; bottom:0; display:flex; flex-direction:column; align-items:center; justify-content:center; background:rgba(0,0,0,0.8); z-index:10;">
+                <i id="lock-icon" class="fas fa-lock" style="font-size:2rem; color:#888; margin-bottom:0.5rem;"></i>
+                <span id="lock-text" style="color:#888; font-size:0.875rem;">Login to write message</span>
+            </div>
+            <textarea id="message-textarea" placeholder="Type your message here..." disabled
+                style="width:100%; height:100%; background:transparent; border:none; color:white; resize:none; font-family:inherit; font-size:0.875rem; outline:none;">
+            </textarea>
+        </div>
+
+        <!-- Send Button -->
+        <button id="send-btn" class="btn-white-full" disabled onclick="sendMessage()">
+            SEND
+        </button>
+
+        <!-- Initialize Supabase -->
+        <script>
+            const supabaseUrl = "https://duditkgugfvlhbbczmec.supabase.co";
+            const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR1ZGl0a2d1Z2Z2bGhiYmN6bWVjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njc3MDQyMzQsImV4cCI6MjA4MzI4MDIzNH0.9cpqGEdwE1IynQaZQUFAKJL5PoPkh-Htn4oCexaR9os";
+
+            const supabaseClient = window.supabase.createClient(
+                supabaseUrl,
+                supabaseKey
+            );
+
+            // Google Login Function - forces account selector and redirects back to partner.html
+            async function loginWithGoogle() {
+                const { error } = await supabaseClient.auth.signInWithOAuth({
+                    provider: 'google',
+                    options: {
+                        redirectTo: window.location.href,
+                        queryParams: {
+                            prompt: 'select_account' // Forces the user to pick an account every time
+                        }
+                    }
+                });
+                if (error) alert(error.message);
+            }
+
+            // Verify if the user email is allowed/found
+            // By default, if they login via Google, they are in the auth system.
+            // If you want to check against a specific whitelist table, you can do it here.
+            async function verifyUserAccess(session) {
+                if (!session || !session.user) return false;
+
+                // Basic check: User must be authenticated
+                const email = session.user.email;
+                if (!email) return false;
+
+                console.log('Verifying access for:', email);
+
+                // If you have a specific table of 'authorized_partners', query it here:
+                /*
+                const { data, error } = await supabaseClient
+                    .from('authorized_partners')
+                    .select('email')
+                    .eq('email', email)
+                    .single();
+                 if (error || !data) return false;
+                */
+
+                return true; // Access granted if authenticated
+            }
+
+            // Lock the message area
+            function lockMessageBox() {
+                const overlay = document.getElementById('lock-overlay');
+                const lockIcon = document.getElementById('lock-icon');
+                const lockText = document.getElementById('lock-text');
+                const textarea = document.getElementById('message-textarea');
+                const loginBtn = document.querySelector('.btn-white-full:not(#send-btn)');
+                const sendBtn = document.getElementById('send-btn');
+
+                overlay.style.display = 'flex';
+                lockIcon.className = 'fas fa-lock';
+                lockIcon.style.color = '#888';
+                lockText.textContent = 'Login to write message';
+                lockText.style.color = '#888';
+
+                textarea.disabled = true;
+                textarea.value = ''; // Clear textarea on logout
+                textarea.placeholder = 'Type your message here...';
+
+                if (loginBtn) {
+                    loginBtn.innerHTML = '<i class="fab fa-google" style="color:#EA4335;"></i> Sign in with Google';
+                    loginBtn.disabled = false;
+                    loginBtn.style.opacity = '1';
+                }
+
+                if (sendBtn) {
+                    sendBtn.disabled = true;
+                }
+            }
+
+            // Unlock message box after successful login
+            function unlockMessageBox(immediate = false) {
+                const overlay = document.getElementById('lock-overlay');
+                const lockIcon = document.getElementById('lock-icon');
+                const lockText = document.getElementById('lock-text');
+                const textarea = document.getElementById('message-textarea');
+                const loginBtn = document.querySelector('.btn-white-full:not(#send-btn)');
+                const sendBtn = document.getElementById('send-btn');
+
+                // Update text indicators
+                lockIcon.className = 'fas fa-unlock';
+                lockIcon.style.color = '#4ade80';
+                lockText.textContent = 'Authenticated. Unlocking...';
+                lockText.style.color = '#4ade80';
+
+                if (loginBtn) {
+                    loginBtn.innerHTML = '<i class="fas fa-check" style="color:#4ade80;"></i> Logged In';
+                    loginBtn.disabled = true;
+                    loginBtn.style.opacity = '0.7';
+                }
+
+                const applyUnlock = () => {
+                    overlay.style.display = 'none';
+                    textarea.disabled = false;
+                    textarea.placeholder = 'You can write message now';
+                    if (sendBtn) {
+                        sendBtn.disabled = false;
+                    }
+                };
+
+                if (immediate) {
+                    applyUnlock();
+                } else {
+                    // Show the unlock animation for 1s
+                    setTimeout(applyUnlock, 1000);
+                }
+            }
+
+            // Send Message to Supabase Table (contact_messages)
+            async function sendMessage() {
+                const textarea = document.getElementById('message-textarea');
+                const sendBtn = document.getElementById('send-btn');
+                const message = textarea.value.trim();
+
+                if (!message) {
+                    alert('Please enter a message.');
+                    return;
+                }
+
+                // Get current user session
+                const { data: { session } } = await supabaseClient.auth.getSession();
+                if (!session) {
+                    alert('You must be logged in to send a message.');
+                    lockMessageBox();
+                    return;
+                }
+
+                sendBtn.disabled = true;
+                sendBtn.textContent = 'SENDING...';
+
+                // Insert into the 'contact_messages' table
+                const { error } = await supabaseClient
+                    .from('contact_messages')
+                    .insert([
+                        {
+                            email: session.user.email,
+                            message: message
+                        }
+                    ]);
+
+                if (error) {
+                    alert('Error sending message: ' + error.message);
+                    sendBtn.disabled = false;
+                    sendBtn.textContent = 'SEND';
+                } else {
+                    alert('Message sent successfully! to Shark-TechLabs.');
+                    textarea.value = '';
+                    sendBtn.disabled = false;
+                    sendBtn.textContent = 'SEND';
+                }
+            }
+
+            // Check auth state changes (handles OAuth callback and logout)
+            supabaseClient.auth.onAuthStateChange(async (event, session) => {
+                console.log('Auth state changed:', event, session);
+                if (session) {
+                    const hasAccess = await verifyUserAccess(session);
+                    if (hasAccess) {
+                        unlockMessageBox(event === 'INITIAL_SESSION');
+                    } else {
+                        alert('Your email is not authorized to write messages.');
+                        await supabaseClient.auth.signOut();
+                        lockMessageBox();
+                    }
+                } else {
+                    lockMessageBox();
+                }
+            });
+
+            // Initial session check on page load
+            async function checkInitialAuth() {
+                const { data: { session } } = await supabaseClient.auth.getSession();
+                if (session) {
+                    const hasAccess = await verifyUserAccess(session);
+                    if (hasAccess) {
+                        unlockMessageBox(true);
+                    } else {
+                        lockMessageBox();
+                    }
+                } else {
+                    lockMessageBox();
+                }
+            }
+
+            checkInitialAuth();
+        </script>
+
+    </div> <!-- Close partner-card -->
+
+    <!-- Footer -->
+    <footer class="site-footer partner-footer">
+        <div class="footer-wrapper">
+            <div class="footer-bottom">
+                <p>© 2025 Shark-Techlabs. All rights reserved.</p>
+                <p>Design by Shark-Techlabs</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom Script for Background Animation -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
