@@ -121,8 +121,28 @@ function closeModal(modalId) {
 
 // Close modal when clicking outside
 window.addEventListener('click', (e) => {
-    if (e.target.classList.contains('modal-backdrop')) {
+    if (e.target.classList.contains('modal-backdrop') || e.target.classList.contains('modal-overlay')) {
         closeModal(e.target.id);
+    }
+});
+
+// Info Modal Specific Logic
+document.addEventListener('DOMContentLoaded', () => {
+    const infoIcon = document.querySelector('.info-icon');
+    const infoModal = document.getElementById('info-modal');
+    const modalClose = infoModal?.querySelector('.modal-close');
+
+    if (infoIcon && infoModal) {
+        infoIcon.addEventListener('click', (e) => {
+            e.stopPropagation();
+            openModal('info-modal');
+        });
+    }
+
+    if (modalClose) {
+        modalClose.addEventListener('click', () => {
+            closeModal('info-modal');
+        });
     }
 });
 

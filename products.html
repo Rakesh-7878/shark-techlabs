@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Products - SHARK-TECH LABS</title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Space+Grotesk:wght@300..700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="products-page-body">
+
+    <!-- Ocean Particle Background -->
+    <canvas id="ocean"></canvas>
+
+    <!-- Header Section -->
+    <header class="products-header">
+        <a href="index.html" class="back-link">← Back</a>
+        <h1 class="products-title">Our products</h1>
+        <div class="header-line"></div>
+    </header>
+
+    <main class="products-content">
+        <div class="products-grid">
+            <!-- Shark AI -->
+            <div class="product-card">
+                <div class="card-header">
+                    <span class="status-tag"><span class="status-light"></span>Ready to use</span>
+                    <div class="logo-group">
+                        <div class="info-icon" title="Information">i</div>
+                        <img src="images/shark-logo.jpg" alt="Shark AI Logo" class="product-logo">
+                    </div>
+                </div>
+                <h3 class="product-title">Shark AI</h3>
+
+                <div class="timeline-container">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-header">
+                            <span class="phase-name">Accessible phase</span>
+                            <span class="target-date">Target: JAN 2026</span>
+                        </div>
+                        <p class="timeline-desc">
+                            Powered by Shark-techlabs <strong>LLM </strong>. Enhanced with 'Shark-techLabs’
+                            proprietary on-prem orchestration, security, and retrieval intelligence.Base modal
+                            released on 12-01-2026 with conference between the people behind this.
+                        </p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot active"></div>
+                        <div class="timeline-header">
+                            <span class="phase-name">Beta v0.1</span>
+                            <span class="target-date">Target: Jan 2027</span>
+                        </div>
+                        <p class="timeline-desc">
+                            Introduces <strong>Shark AI Core v0.1 </strong>. Optimized for all scale user,Best use
+                            for students on latest Tech stack Evolved in the matrix.
+                        </p>
+                    </div>
+                </div>
+
+                <a href="https://sharrk-ai.netlify.app/" class="explore-ai-btn">
+                    Explore AI
+                </a>
+
+                <a href="#" class="mvp-link">
+                    View Engineering MVP →
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Information Modal -->
+    <div id="info-modal" class="modal-overlay">
+        <div class="modal-card">
+            <button class="modal-close">&times;</button>
+            <div class="modal-header">
+                <img src="images/shark-logo.jpg" alt="Shark AI" class="modal-logo">
+                <h2 class="modal-title">About Shark AI</h2>
+            </div>
+            <div class="modal-body">
+                <div class="info-section">
+                    <h3>Day-to-Day Life</h3>
+                    <p>Shark AI seamlessly integrates into your daily routine, handling complex scheduling, smart home
+                        automation, and personalized content curation with unmatched efficiency. It acts as a proactive
+                        digital twin, anticipating your needs before you even realize them.</p>
+                </div>
+                <div class="info-section">
+                    <h3>For Students</h3>
+                    <p>Revolutionize your learning experience. Shark AI provides real-time tutoring, complex
+                        problem-solving across all STEM fields, and automated study plan generation. It transforms
+                        stagnant data into interactive, easy-to-digest logical insights, giving students a definitive
+                        edge in their academic journey.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Script for Background Animation -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
